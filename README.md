@@ -1,25 +1,7 @@
-# Canonical W-ETH
+# Vexchange VET
 
-Canonical [W-ETH](https://weth.io/) package (see https://blog.0xproject.com/canonical-weth-a9aa7d0279dd)
-
-## Usage
-
-```sh
-npm install --save truffle-contract canonical-weth
-```
-
-and
-
-```js
-const contract = require('truffle-contract');
-const wethArtifact = require('canonical-weth');
-
-const weth = contract(wethArtifact);
-```
+Vexchange VET is a fork of VVET that ensures Vexchange LPs receive their fair share of VTHO. The contracts have a `recoverToken` method that allows the `owner` to move non-VET VIP-180 tokens out of the contract. This will enable the distribution of VTHO to LPs that otherwise might have been stuck, or stolen by frontrunners via the `skim` method. Initially, the Vexchange team will be entrusted to distribute the `VTHO`, however, `owner` can always be changed to a trustless claim manager contract (more dev work than a centralized solution).
 
 ## Deployed contract addresses
-
-- Mainnet: [0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)
-- Kovan: [0xd0a1e359811322d97991e03f863a0c30c2cf029c](https://kovan.etherscan.io/address/0xd0a1e359811322d97991e03f863a0c30c2cf029c)
-- Ropsten: [0xc778417e063141139fce010982780140aa0cd5ab](https://ropsten.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab)
-- Rinkeby: [0xc778417e063141139fce010982780140aa0cd5ab](https://rinkeby.etherscan.io/address/0xc778417e063141139fce010982780140aa0cd5ab)
+ - Mainnet: Coming Soon
+ - Testnet: Coming Soon
