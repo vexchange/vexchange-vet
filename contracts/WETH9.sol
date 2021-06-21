@@ -13,11 +13,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity >=0.4.22 <0.6;
+pragma solidity =0.5.17;
 
-contract WETH9 {
-    string public name     = "Wrapped Ether";
-    string public symbol   = "WETH";
+import "./Ownable.sol";
+
+interface IVIP180
+{
+    function transfer(address aDestination, uint aAmount) external returns (bool);
+}
+
+contract WETH9 is Ownable {
+    string public name     = "Vexchange VET";
+    string public symbol   = "VVET";
     uint8  public decimals = 18;
 
     event  Approval(address indexed src, address indexed guy, uint wad);
@@ -31,10 +38,12 @@ contract WETH9 {
     function() external payable {
         deposit();
     }
+
     function deposit() public payable {
         balanceOf[msg.sender] += msg.value;
         emit Deposit(msg.sender, msg.value);
     }
+
     function withdraw(uint wad) public {
         require(balanceOf[msg.sender] >= wad);
         balanceOf[msg.sender] -= wad;
@@ -73,6 +82,11 @@ contract WETH9 {
         emit Transfer(src, dst, wad);
 
         return true;
+    }
+
+    function recoverTokens(address aToken, address aDestination, uint aAmount) external onlyOwner returns (bool)
+    {
+        return IVIP180(aToken).transfer(aDestination, aAmount);
     }
 }
 
