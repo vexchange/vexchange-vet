@@ -22,7 +22,7 @@ interface IVIP180
     function transfer(address aDestination, uint aAmount) external returns (bool);
 }
 
-contract WETH9 is Ownable {
+contract VVET is Ownable {
     string public name     = "Vexchange VET";
     string public symbol   = "VVET";
     uint8  public decimals = 18;
